@@ -1,0 +1,46 @@
+---
+const socials = [
+  { label: "Instagram", href: "https://instagram.com/cherecakeatelier" },
+  { label: "TikTok", href: "https://tiktok.com/@cherecakeatelier" },
+  { label: "WhatsApp", href: "https://wa.me/6281234567890" },
+];
+---
+
+<footer class="bg-surface-dark text-canvas">
+  <div class="mx-auto max-w-[1200px] px-6 py-16">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div>
+        <p class="font-display text-2xl">Chère Cake Atelier</p>
+        <p class="mt-3 text-sm text-canvas/70">Setiap potongan, kenangan yang dirayakan.</p>
+      </div>
+
+      <div>
+        <p class="text-sm font-medium text-canvas/50 uppercase tracking-wide">Kontak</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="https://wa.me/6281234567890" class="hover:text-primary transition-colors">+62 812-3456-7890</a></li>
+          <li><a href="mailto:hello@cherecakeatelier.id" class="hover:text-primary transition-colors">hello@cherecakeatelier.id</a></li>
+          <li class="text-canvas/70">Jakarta Selatan, Indonesia</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-sm font-medium text-canvas/50 uppercase tracking-wide">Jam Operasional</p>
+        <ul class="mt-3 space-y-2 text-sm text-canvas/70">
+          <li>Senin–Sabtu: 09.00–18.00</li>
+          <li>Minggu: Tutup (konsultasi via WhatsApp tetap dibalas)</li>
+        </ul>
+        <div class="mt-4 flex gap-4">
+          {socials.map((social) => (
+            <a href={social.href} class="text-sm font-medium hover:text-primary transition-colors">
+              {social.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-canvas/10 pt-6 text-xs text-canvas/50">
+      © {new Date().getFullYear()} Chère Cake Atelier. Semua hak cipta dilindungi.
+    </div>
+  </div>
+</footer>

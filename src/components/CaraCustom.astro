@@ -1,0 +1,43 @@
+---
+import { ChatCircleTextIcon, PaintBrushIcon, CheckCircleIcon, TruckIcon } from "@phosphor-icons/react/ssr";
+
+const steps = [
+  {
+    icon: ChatCircleTextIcon,
+    title: "Konsultasi Desain",
+    desc: "Ceritakan tema, warna, jumlah tamu/porsi, dan referensi (Pinterest/IG boleh dilampirkan)",
+  },
+  {
+    icon: PaintBrushIcon,
+    title: "Sketsa & Quote",
+    desc: "Kami kirim sketsa desain kasar + estimasi harga dalam 1-2 hari",
+  },
+  {
+    icon: CheckCircleIcon,
+    title: "DP & Konfirmasi",
+    desc: "DP 50% untuk mulai produksi, jadwal pengambilan dikunci",
+  },
+  {
+    icon: TruckIcon,
+    title: "Pengambilan/Pengantaran",
+    desc: "Kue siap H-0 pagi/siang sesuai jadwal acara, delivery tersedia dengan box khusus anti-goyang",
+  },
+];
+---
+
+<section class="py-24">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <h2 class="font-display text-3xl md:text-[2.25rem] text-ink text-center">Dari Ide ke Kue Nyata.</h2>
+
+    <ol class="mt-16 grid gap-8 md:grid-cols-4">
+      {steps.map((step, i) => (
+        <li class="relative rounded-xl bg-surface-card p-8">
+          <step.icon weight="duotone" size={32} color="var(--color-primary)" />
+          <p class="mt-4 text-xs font-medium uppercase tracking-wide text-muted">Langkah {i + 1}</p>
+          <p class="mt-1 font-display text-lg text-ink">{step.title}</p>
+          <p class="mt-2 text-sm text-body">{step.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

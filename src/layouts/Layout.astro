@@ -1,0 +1,97 @@
+---
+import "../styles/global.css";
+import { heroImage } from "../data/images";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Chère Cake Atelier — Custom Cake & Dessert Table Jakarta",
+  description = "Custom birthday cake, wedding cake, dan dessert table dengan desain orisinal. Bahan premium, pre-order H-3, konsultasi desain gratis.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://cherecakeatelier.id");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  name: "Chère Cake Atelier",
+  description,
+  image: heroImage.url,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Jakarta Selatan",
+    addressCountry: "ID",
+  },
+  telephone: "+62-812-3456-7890",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Product", name: "Simple Custom Cake" },
+      priceCurrency: "IDR",
+      price: "350000",
+    },
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Product", name: "Custom Design Cake" },
+      priceCurrency: "IDR",
+      price: "650000",
+    },
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Product", name: "Premium/Wedding Cake" },
+      priceCurrency: "IDR",
+      price: "1500000",
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="custom cake Jakarta, kue ulang tahun custom, wedding cake custom, dessert table, kue tema karakter anak"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={heroImage.url} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="id_ID" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={heroImage.url} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-canvas text-body">
+    <slot />
+  </body>
+</html>

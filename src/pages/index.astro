@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero";
+import Kategori from "../components/Kategori";
+import CaraCustom from "../components/CaraCustom.astro";
+import Galeri from "../components/Galeri";
+import RasaFilling from "../components/RasaFilling";
+import PaketHarga from "../components/PaketHarga";
+import DessertTable from "../components/DessertTable";
+import Testimonial from "../components/Testimonial";
+import FAQ from "../components/FAQ";
+import CTAKonsultasi from "../components/CTAKonsultasi";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <Navbar />
+  <main class="min-h-screen">
+    <Hero client:load />
+    <Kategori client:visible />
+    <CaraCustom />
+    <Galeri client:visible />
+    <RasaFilling client:visible />
+    <PaketHarga client:visible />
+    <DessertTable client:visible />
+    <Testimonial client:visible />
+    <FAQ client:visible />
+    <CTAKonsultasi client:idle />
+  </main>
+  <Footer />
+</Layout>
