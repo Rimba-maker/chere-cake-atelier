@@ -19,3 +19,6 @@ npm-debug.log*
 
 # astro
 .astro/
+
+# markdown docs (PRD, notes)
+*.md
