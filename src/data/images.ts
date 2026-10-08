@@ -1,4 +1,6 @@
-const imageRoot = `${import.meta.env.BASE_URL}images/cakes/`;
+const baseUrl = import.meta.env.BASE_URL;
+export const assetBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const imageRoot = `${assetBase}images/cakes/`;
 
 export const photo = (id: number, width: 480 | 960 | 1440 = 960) =>
   `${imageRoot}${id}-${width}.webp`;

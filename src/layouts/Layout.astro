@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { heroImage } from "../data/images";
+import { assetBase, heroImage } from "../data/images";
 
 interface Props {
   title?: string;
@@ -62,7 +62,7 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${assetBase}favicon.svg`} />
     <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -85,8 +85,8 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 
     <meta name="theme-color" content="#F5B8CD" />
-    <link rel="preload" href={`${import.meta.env.BASE_URL}fonts/bricolage-grotesque-latin.woff2`} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={`${import.meta.env.BASE_URL}fonts/manrope-latin.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${assetBase}fonts/bricolage-grotesque-latin.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${assetBase}fonts/manrope-latin.woff2`} as="font" type="font/woff2" crossorigin />
   </head>
   <body class="bg-canvas text-body">
     <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
