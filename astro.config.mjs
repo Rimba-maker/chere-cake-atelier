@@ -10,6 +10,10 @@ export default defineConfig({
   base: isGithubActions ? '/chere-cake-atelier' : '/',
   integrations: [react()],
   vite: {
+    // Production prebundles from check/build must not replace React's dev runtime.
+    cacheDir: process.argv.includes('dev')
+      ? 'node_modules/.vite-development'
+      : 'node_modules/.vite-production',
     plugins: [tailwindcss()],
   },
 });
