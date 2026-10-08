@@ -1,43 +1,59 @@
 ---
-import { ChatCircleTextIcon, PaintBrushIcon, CheckCircleIcon, TruckIcon } from "@phosphor-icons/react/ssr";
+import { photo, photoSet, photoSource } from "../data/images";
+import "../styles/story.css";
 
 const steps = [
   {
-    icon: ChatCircleTextIcon,
-    title: "Konsultasi Desain",
-    desc: "Ceritakan tema, warna, jumlah tamu/porsi, dan referensi (Pinterest/IG boleh dilampirkan)",
+    title: "Ceritakan idemu",
+    desc: "Konsultasi tema, warna, tanggal, dan jumlah porsi. Referensi Pinterest atau Instagram boleh dibawa.",
   },
   {
-    icon: PaintBrushIcon,
-    title: "Sketsa & Quote",
-    desc: "Kami kirim sketsa desain kasar + estimasi harga dalam 1-2 hari",
+    title: "Lihat sketsa & quote",
+    desc: "Sketsa desain dan estimasi harga dikirim dalam 1–2 hari. Termasuk satu revisi sketsa sebelum produksi.",
   },
   {
-    icon: CheckCircleIcon,
-    title: "DP & Konfirmasi",
-    desc: "DP 50% untuk mulai produksi, jadwal pengambilan dikunci",
+    title: "Konfirmasi dengan DP 50%",
+    desc: "Setelah desain disepakati, DP 50% memulai produksi dan mengunci jadwal pengambilan.",
   },
   {
-    icon: TruckIcon,
-    title: "Pengambilan/Pengantaran",
-    desc: "Kue siap H-0 pagi/siang sesuai jadwal acara, delivery tersedia dengan box khusus anti-goyang",
+    title: "Saatnya merayakan",
+    desc: "Ambil kue sesuai jadwal H-0 pagi/siang, atau pilih pengantaran dalam kota dengan box khusus anti-goyang.",
   },
 ];
 ---
 
-<section class="py-24">
-  <div class="mx-auto max-w-[1200px] px-6">
-    <h2 class="font-display text-3xl md:text-[2.25rem] text-ink text-center">Dari Ide ke Kue Nyata.</h2>
-
-    <ol class="mt-16 grid gap-8 md:grid-cols-4">
-      {steps.map((step, i) => (
-        <li class="relative rounded-xl bg-surface-card p-8">
-          <step.icon weight="duotone" size={32} color="var(--color-primary)" />
-          <p class="mt-4 text-xs font-medium uppercase tracking-wide text-muted">Langkah {i + 1}</p>
-          <p class="mt-1 font-display text-lg text-ink">{step.title}</p>
-          <p class="mt-2 text-sm text-body">{step.desc}</p>
-        </li>
-      ))}
-    </ol>
+<section id="cara-custom" class="section process-section" aria-labelledby="process-heading">
+  <div class="container process-composition">
+    <div class="process-copy">
+      <h2 id="process-heading" class="section-heading">Dari ide ke<br />kue nyata.</h2>
+      <p class="section-intro">Tidak perlu sudah punya semua jawabannya. Mulai dari satu cerita, kita rancang sisanya bersama.</p>
+      <ol class="process-sequence">
+        {steps.map((step, index) => (
+          <li>
+            <span class="process-number" aria-hidden="true">{index + 1}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <a href="#konsultasi" class="text-link">Mulai konsultasi desain</a>
+    </div>
+    <div class="process-visual">
+      <figure class="process-photo">
+        <img src={photo(8478047)} srcset={photoSet(8478047)} sizes="(max-width: 800px) 100vw, 42vw" alt="Proses menghias cake dengan cream dan alat pastry" width="960" height="1200" loading="lazy" decoding="async" />
+        <figcaption class="photo-note"><a href={photoSource(8478047)} target="_blank" rel="noreferrer">Inspirasi proses pastry · Pexels</a> — bukan dokumentasi staf Chère.</figcaption>
+      </figure>
+      <div class="process-lead-times">
+        <h3>Sisihkan waktu untuk yang spesial.</h3>
+        <dl>
+          <div><dt>Desain simpel</dt><dd>H-3</dd></div>
+          <div><dt>Custom design</dt><dd>H-7</dd></div>
+          <div><dt>Wedding cake</dt><dd>H-14</dd></div>
+        </dl>
+        <p>Minimal pre-order sebelum tanggal acara.</p>
+      </div>
+    </div>
   </div>
 </section>

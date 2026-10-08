@@ -1,20 +1,18 @@
+const imageRoot = `${import.meta.env.BASE_URL}images/cakes/`;
+
+export const photo = (id: number, width: 480 | 960 | 1440 = 960) =>
+  `${imageRoot}${id}-${width}.webp`;
+export const photoSet = (id: number) =>
+  `${photo(id, 480)} 480w, ${photo(id)} 960w`;
+export const photoSource = (id: number) =>
+  `https://www.pexels.com/photo/${id}/`;
+
 export const heroImage = {
-  url: "https://images.pexels.com/photos/30469068/pexels-photo-30469068.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
-  alt: "Kue ulang tahun custom elegan dengan hiasan bunga gula putih dan pink",
+  url: photo(7180728, 1440),
+  alt: "Cake buttercream pink dengan dekorasi bola pastel dan sentuhan emas",
 };
-
-export const cakeSliceImage = {
-  url: "https://images.pexels.com/photos/806363/pexels-photo-806363.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-  alt: "Potongan kue merah lapis dengan cream cheese frosting",
-};
-
-export const dessertTableItemsImage = {
-  url: "https://images.pexels.com/photos/11168993/pexels-photo-11168993.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-  alt: "Aneka macaron warna-warni tersusun rapi",
-};
-
-export type GaleriKategori = "Birthday" | "Wedding" | "Corporate" | "Dessert Table" | "Anak";
-
+export type GaleriKategori =
+  "Birthday" | "Wedding" | "Corporate" | "Dessert Table" | "Anak";
 export const galeriKategoriList: readonly GaleriKategori[] = [
   "Birthday",
   "Wedding",
@@ -23,112 +21,269 @@ export const galeriKategoriList: readonly GaleriKategori[] = [
   "Anak",
 ];
 
-export type CategoryIcon = "Cake" | "Diamond" | "Buildings" | "Cookie" | "Confetti";
-
-export const categories: {
+export const categories = [
+  {
+    kategori: "Birthday",
+    title: "Birthday Cake",
+    desc: "Untuk dia yang paling kamu kenal. Dari warna favorit sampai cerita kecil yang hanya kalian tahu.",
+    price: "Mulai Rp 350.000",
+    image: photo(14454566),
+    alt: "Cake pink floral dengan topper Happy Birthday",
+    id: 14454566,
+  },
+  {
+    kategori: "Wedding",
+    title: "Wedding & Engagement",
+    desc: "Satu centerpiece untuk hari yang tak ingin kamu lupakan. Tiered, cutting, atau dummy cake dengan detail personal.",
+    price: "Mulai Rp 1.500.000",
+    image: photo(1702373),
+    alt: "Wedding cake putih tiga tingkat dengan bunga segar",
+    id: 1702373,
+  },
+  {
+    kategori: "Corporate",
+    title: "Corporate & Gifting",
+    desc: "Rayakan pencapaian brand lewat cake berlogo, hampers dessert, atau centerpiece untuk launching.",
+    price: "Custom quote",
+    image: photo(34596958),
+    alt: "Inspirasi cake putih bertingkat pada cake stand emas",
+    id: 34596958,
+  },
+  {
+    kategori: "Dessert Table",
+    title: "Dessert Table",
+    desc: "Cupcake, macaron, tart mini, dan cake pop. Satu meja kecil, banyak alasan untuk kembali.",
+    price: "Min. 30 pcs per item",
+    image: photo(7026990),
+    alt: "Dessert table hijau dengan cake dan aneka dessert",
+    id: 7026990,
+  },
+  {
+    kategori: "Anak",
+    title: "Little Celebrations",
+    desc: "Dunia kecilnya, jadi cake sungguhan. Tema karakter dan warna favorit dengan fondant atau buttercream food-grade.",
+    price: "Mulai Rp 450.000",
+    image: photo(8015132),
+    alt: "Cake kecil dengan lilin dan dekorasi pesta warna-warni",
+    id: 8015132,
+  },
+] satisfies {
   kategori: GaleriKategori;
-  icon: CategoryIcon;
   title: string;
   desc: string;
   price: string;
   image: string;
   alt: string;
-}[] = [
+  id: number;
+}[];
+
+export type GalleryPhoto = {
+  id: number;
+  kategori: GaleriKategori;
+  title: string;
+  image: string;
+  alt: string;
+  landscape?: boolean;
+};
+const gallery: Omit<GalleryPhoto, "image">[] = [
   {
+    id: 7180728,
     kategori: "Birthday",
-    icon: "Cake",
-    title: "Birthday Cake",
-    desc: "Dari tema kartun anak sampai minimalis elegan dewasa — desain sesuai kepribadian yang berulang tahun.",
-    price: "Mulai Rp 350.000",
-    image: "https://images.pexels.com/photos/30354868/pexels-photo-30354868.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Kue ulang tahun custom bertema topi dengan hiasan bunga",
+    title: "Pink & a little gold",
+    alt: "Cake pink dengan dekorasi bola pastel dan sentuhan emas",
   },
   {
+    id: 1702373,
     kategori: "Wedding",
-    icon: "Diamond",
-    title: "Wedding & Engagement Cake",
-    desc: "Tiered cake, dummy cake untuk dekorasi, atau cutting cake asli — semua dengan finishing premium.",
-    price: "Mulai Rp 1.500.000",
-    image: "https://images.pexels.com/photos/26774581/pexels-photo-26774581.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Kue pernikahan bertingkat lima dengan rangkaian bunga",
+    title: "A floral kind of forever",
+    alt: "Wedding cake tiga tingkat putih dengan bunga",
   },
   {
-    kategori: "Corporate",
-    icon: "Buildings",
-    title: "Corporate Cake & Gifting",
-    desc: "Cake dengan logo brand, hampers dessert untuk klien, atau kue launching produk.",
-    price: "Custom quote",
-    image: "https://images.pexels.com/photos/34596958/pexels-photo-34596958.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Kue elegan putih di atas cake stand emas untuk acara formal",
-  },
-  {
-    kategori: "Dessert Table",
-    icon: "Cookie",
-    title: "Dessert Table",
-    desc: "Rangkaian dessert kecil (cupcake, macaron, tart mini, cake pop) untuk buffet acara.",
-    price: "Mulai Rp 25.000/pcs (min. 30 pcs)",
-    image: "https://images.pexels.com/photos/7026990/pexels-photo-7026990.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Meja dessert table dengan kue, macaron, dan rangkaian bunga",
-  },
-  {
+    id: 4959709,
     kategori: "Anak",
-    icon: "Confetti",
-    title: "Themed Cake Anak",
-    desc: "Karakter kartun favorit, tema sekolah, ulang tahun tematik — dibuat dengan food-grade fondant/buttercream aman anak.",
-    price: "Mulai Rp 450.000",
-    image: "https://images.pexels.com/photos/7600387/pexels-photo-7600387.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Anak-anak bertepuk tangan di samping kue ulang tahun warna-warni",
+    title: "A pop of blue",
+    alt: "Drip cake biru dengan buah beri dan cokelat",
+  },
+  {
+    id: 11217160,
+    kategori: "Dessert Table",
+    title: "Tiny pink pleasures",
+    alt: "Cupcake pink dalam cangkir bermotif bunga",
+  },
+  {
+    id: 30469068,
+    kategori: "Birthday",
+    title: "Flowers, made sweeter",
+    alt: "Cake pink dengan bunga putih dan ranting bunga",
+  },
+  {
+    id: 34596958,
+    kategori: "Corporate",
+    title: "The elegant centerpiece",
+    alt: "Cake putih bertingkat di atas stand emas",
+  },
+  {
+    id: 14454566,
+    kategori: "Birthday",
+    title: "Say it with pink",
+    alt: "Birthday cake pink floral dengan topper Happy Birthday",
+  },
+  {
+    id: 6479548,
+    kategori: "Wedding",
+    title: "Citrus & rosemary",
+    alt: "Cake semi-naked bertingkat dengan jeruk kering dan rosemary",
+  },
+  {
+    id: 31972322,
+    kategori: "Dessert Table",
+    title: "A table full of joy",
+    alt: "Meja pesta penuh dessert pastel",
+    landscape: false,
+  },
+  {
+    id: 8015132,
+    kategori: "Anak",
+    title: "One little wish",
+    alt: "Cake putih kecil dengan lilin dan ceri di meja pesta pink",
+  },
+  {
+    id: 2067436,
+    kategori: "Birthday",
+    title: "For the chocolate lover",
+    alt: "Cake cokelat pada stand dengan latar gelap",
+  },
+  {
+    id: 31243101,
+    kategori: "Corporate",
+    title: "White on blush",
+    alt: "Cake putih dengan bunga pada meja berwarna pink",
+  },
+  {
+    id: 30354868,
+    kategori: "Birthday",
+    title: "A cake with character",
+    alt: "Cake bertema topi dengan ilustrasi wajah dan bunga pink",
+  },
+  {
+    id: 26774581,
+    kategori: "Wedding",
+    title: "Love, layer by layer",
+    alt: "Wedding cake putih tinggi dengan rangkaian bunga",
+  },
+  {
+    id: 35523253,
+    kategori: "Birthday",
+    title: "Another year, another wish",
+    alt: "Cake cokelat dengan lilin angka di atas meja",
+  },
+  {
+    id: 9627770,
+    kategori: "Anak",
+    title: "Make a wish",
+    alt: "Cake dengan remah cokelat dan lilin angka enam",
+  },
+  {
+    id: 14396233,
+    kategori: "Wedding",
+    title: "Simply, beautifully white",
+    alt: "Cake putih di samping rangkaian mawar",
+    landscape: true,
+  },
+  {
+    id: 17001817,
+    kategori: "Wedding",
+    title: "Garden celebration",
+    alt: "Wedding cake bertingkat dengan bunga segar",
+  },
+  {
+    id: 7026990,
+    kategori: "Dessert Table",
+    title: "A little garden party",
+    alt: "Dessert table hijau dengan cake dan aneka dessert",
+    landscape: true,
+  },
+  {
+    id: 3593430,
+    kategori: "Dessert Table",
+    title: "Sweet afternoons",
+    alt: "Dessert table outdoor dengan cake dan macaron",
+    landscape: true,
+  },
+  {
+    id: 34180404,
+    kategori: "Dessert Table",
+    title: "Something blue, something sweet",
+    alt: "Meja dessert outdoor dengan bunga biru dan putih",
+  },
+  {
+    id: 11168993,
+    kategori: "Dessert Table",
+    title: "The macaron palette",
+    alt: "Macaron warna-warni dalam close-up",
+  },
+  {
+    id: 19036040,
+    kategori: "Birthday",
+    title: "Chocolate, dressed up",
+    alt: "Aneka birthday cake cokelat dan drip cake",
+  },
+  {
+    id: 2144200,
+    kategori: "Birthday",
+    title: "The first slice",
+    alt: "Cake cokelat dengan cream dan ceri yang sudah dipotong",
+    landscape: true,
+  },
+  {
+    id: 5682363,
+    kategori: "Dessert Table",
+    title: "Tea & tiny cakes",
+    alt: "Cupcake pada stand bersama tea set",
+    landscape: true,
+  },
+  {
+    id: 29192543,
+    kategori: "Anak",
+    title: "Pastel birthday dreams",
+    alt: "Birthday cake pastel dengan dekorasi cream",
+  },
+  {
+    id: 1414234,
+    kategori: "Birthday",
+    title: "Pretty in every layer",
+    alt: "Potongan cake pink berlapis pada piring putih",
+    landscape: true,
+  },
+  {
+    id: 16976667,
+    kategori: "Dessert Table",
+    title: "A cherry on top",
+    alt: "Dessert cokelat dengan cream, ceri, dan stroberi di piring",
+    landscape: true,
   },
 ];
-
-export const galeriImages: { kategori: GaleriKategori; image: string; alt: string }[] = [
-  { kategori: "Birthday", image: "https://images.pexels.com/photos/7180728/pexels-photo-7180728.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue ulang tahun pink dengan bola emas di atas meja" },
-  { kategori: "Birthday", image: "https://images.pexels.com/photos/14454566/pexels-photo-14454566.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue ulang tahun pink dengan bunga dan tulisan Happy Birthday" },
-  { kategori: "Birthday", image: "https://images.pexels.com/photos/35523253/pexels-photo-35523253.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue coklat dengan lilin angka dan bunga" },
-  { kategori: "Birthday", image: "https://images.pexels.com/photos/9627770/pexels-photo-9627770.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Close-up kue ulang tahun dengan lilin menyala dan hiasan bunga icing" },
-  { kategori: "Birthday", image: "https://images.pexels.com/photos/8015132/pexels-photo-8015132.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue ulang tahun dengan satu lilin di atasnya" },
-
-  { kategori: "Wedding", image: "https://images.pexels.com/photos/6479548/pexels-photo-6479548.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue pernikahan dengan hiasan rosemary dan jeruk kering" },
-  { kategori: "Wedding", image: "https://images.pexels.com/photos/34596959/pexels-photo-34596959.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue pernikahan tiga tingkat putih di atas cake stand emas" },
-  { kategori: "Wedding", image: "https://images.pexels.com/photos/14396233/pexels-photo-14396233.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue pernikahan putih dengan mawar putih" },
-  { kategori: "Wedding", image: "https://images.pexels.com/photos/17001817/pexels-photo-17001817.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue pernikahan dengan rangkaian bunga di acara resepsi" },
-  { kategori: "Wedding", image: "https://images.pexels.com/photos/9703865/pexels-photo-9703865.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Meja resepsi pernikahan boho dengan kue bertingkat" },
-
-  { kategori: "Corporate", image: "https://images.pexels.com/photos/31243101/pexels-photo-31243101.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue putih dua tingkat dengan bunga segar di atas cake stand" },
-  { kategori: "Corporate", image: "https://images.pexels.com/photos/10633531/pexels-photo-10633531.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Kue elegan dikelilingi vas bunga di atas meja" },
-  { kategori: "Corporate", image: "https://images.pexels.com/photos/16120198/pexels-photo-16120198.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Meja mewah dengan kue bertingkat sebagai centerpiece" },
-  { kategori: "Corporate", image: "https://images.pexels.com/photos/3983667/pexels-photo-3983667.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Wanita profesional mempresentasikan hasil dekorasi kue" },
-  { kategori: "Corporate", image: "https://images.pexels.com/photos/31332192/pexels-photo-31332192.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Etalase bakery dengan kue lapis dan macaron tertata rapi" },
-
-  { kategori: "Dessert Table", image: "https://images.pexels.com/photos/3593430/pexels-photo-3593430.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Dessert table outdoor dengan kue, donat, dan bunga" },
-  { kategori: "Dessert Table", image: "https://images.pexels.com/photos/4005331/pexels-photo-4005331.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Dessert table bertema olahraga dengan kue dan camilan manis" },
-  { kategori: "Dessert Table", image: "https://images.pexels.com/photos/34180404/pexels-photo-34180404.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Dessert table pernikahan outdoor dengan dekorasi bunga" },
-  { kategori: "Dessert Table", image: "https://images.pexels.com/photos/10364951/pexels-photo-10364951.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Dessert table dengan permen dan camilan warna-warni" },
-
-  { kategori: "Anak", image: "https://images.pexels.com/photos/6148512/pexels-photo-6148512.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Anak laki-laki memegang kue ulang tahun dengan lilin" },
-  { kategori: "Anak", image: "https://images.pexels.com/photos/6343199/pexels-photo-6343199.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Anak perempuan meniup lilin kue ulang tahun" },
-  { kategori: "Anak", image: "https://images.pexels.com/photos/5471944/pexels-photo-5471944.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Anak kecil meniup lilin di atas kue ulang tahun warna-warni" },
-  { kategori: "Anak", image: "https://images.pexels.com/photos/7100331/pexels-photo-7100331.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Anak-anak tersenyum di samping kue ulang tahun di atas meja" },
-  { kategori: "Anak", image: "https://images.pexels.com/photos/13870474/pexels-photo-13870474.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop", alt: "Anak perempuan merayakan ulang tahun dengan dekorasi meriah" },
-];
-
-export const testimonials: { quote: string; author: string; avatar: string }[] = [
+export const galeriImages: GalleryPhoto[] = gallery.map((item) => ({
+  ...item,
+  image: photo(item.id),
+}));
+export const testimonials = [
   {
     quote:
       "Kue ulang tahun anak saya tema dinosaurus, detailnya di luar ekspektasi. Anak saya sampai gak mau motong saking sayangnya.",
-    author: "Ibu Sarah, birthday cake anak",
-    avatar: "https://images.pexels.com/photos/7525182/pexels-photo-7525182.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
+    author: "Ibu Sarah",
+    occasion: "Birthday cake anak",
   },
   {
     quote:
       "Wedding cake 3 tier kami dibuat sesuai moodboard Pinterest yang saya kirim — hasilnya persis, bahkan lebih bagus dari bayangan.",
-    author: "Nadia, pengantin 2024",
-    avatar: "https://images.pexels.com/photos/287189/pexels-photo-287189.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
+    author: "Nadia",
+    occasion: "Pengantin 2024",
   },
   {
     quote:
       "Pesan dessert table untuk launching produk kantor, tamu-tamu foto-foto terus. Rasa kuenya juga tidak kalah dari tampilannya.",
-    author: "Marketing Manager, brand lokal",
-    avatar: "https://images.pexels.com/photos/29852895/pexels-photo-29852895.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop",
+    author: "Marketing Manager",
+    occasion: "Brand lokal",
   },
 ];

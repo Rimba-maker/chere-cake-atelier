@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import "../styles/details.css";
 
 const faqs = [
   {
@@ -10,56 +10,42 @@ const faqs = [
     a: "Bisa, justru sangat membantu proses desain jadi lebih cepat dan sesuai ekspektasi.",
   },
   {
-    q: "Apakah bisa request tanpa gula/rendah gula untuk diabetes?",
-    a: "Bisa, ada opsi rendah gula dengan tambahan biaya bahan.",
+    q: "Apakah bisa request rendah gula?",
+    a: "Bisa, ada opsi rendah gula dengan tambahan biaya bahan. Informasikan kebutuhan diet dan alergi saat konsultasi; opsi rendah gula bukan klaim aman untuk diabetes.",
   },
   {
     q: "Apakah kue bisa dikirim ke luar kota?",
-    a: "Untuk saat ini pengiriman terbatas dalam kota karena resiko kerusakan selama perjalanan jauh.",
+    a: "Untuk saat ini pengiriman terbatas dalam kota karena risiko kerusakan selama perjalanan jauh.",
   },
   {
     q: "Bagaimana kalau desain di sketsa awal ingin diubah?",
-    a: "Free 1x revisi sketsa sebelum produksi dimulai.",
+    a: "Gratis 1x revisi sketsa sebelum produksi dimulai.",
   },
 ];
 
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
-};
 
 export default function FAQ() {
   return (
-    <section className="py-24">
-      <div className="mx-auto max-w-[720px] px-6">
-        <h2 className="font-display text-3xl md:text-[2.25rem] text-ink text-center">Pertanyaan Seputar Pemesanan.</h2>
-
-        <motion.div
-          className="mt-12 space-y-3"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-        >
-          {faqs.map((faq) => (
-            <motion.details
-              key={faq.q}
-              variants={item}
-              className="group rounded-xl border border-hairline bg-surface-card p-5 open:border-primary"
-            >
-              <summary className="cursor-pointer list-none font-medium text-ink flex items-center justify-between gap-4">
+    <section id="faq" className="section faq-section" aria-labelledby="faq-heading">
+      <div className="container faq-layout">
+        <div className="faq-introduction">
+          <h2 id="faq-heading" className="section-heading">Sebelum<br />tiup lilin.</h2>
+          <p className="section-intro">Pertanyaan seputar pemesanan, supaya rencana manismu lebih tenang.</p>
+          <a className="text-link" href="#konsultasi">Ada pertanyaan lain? Konsultasikan</a>
+        </div>
+        <div className="faq-list">
+          {faqs.map((faq, index) => (
+            <details key={faq.q} className="faq-item" open={index === 0}>
+              <summary>
                 {faq.q}
-                <span className="text-primary transition-transform group-open:rotate-45">+</span>
+                <svg aria-hidden="true" className="faq-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </summary>
-              <p className="mt-3 text-sm text-body">{faq.a}</p>
-            </motion.details>
+              <p>{faq.a}</p>
+            </details>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

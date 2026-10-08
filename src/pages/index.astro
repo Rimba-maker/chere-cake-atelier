@@ -16,17 +16,17 @@ import Footer from "../components/Footer.astro";
 
 <Layout>
   <Navbar />
-  <main class="min-h-screen">
+  <main id="main-content">
     <Hero client:load />
     <Kategori client:visible />
-    <CaraCustom />
     <Galeri client:visible />
     <RasaFilling client:visible />
+    <CaraCustom />
     <PaketHarga client:visible />
     <DessertTable client:visible />
-    <Testimonial client:visible />
-    <FAQ client:visible />
-    <CTAKonsultasi client:idle />
+    <Testimonial />
+    <FAQ />
+    <CTAKonsultasi client:load />
   </main>
   <Footer />
 </Layout>

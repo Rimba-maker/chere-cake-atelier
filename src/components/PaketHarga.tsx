@@ -1,16 +1,19 @@
-import { motion } from "framer-motion";
-import { PlantIcon, LeafIcon, TreeIcon, StarIcon } from "@phosphor-icons/react";
+import { photo, photoSet, photoSource } from "../data/images";
+import { updateBrief } from "../data/consultation";
+import "../styles/details.css";
 
 const tiers = [
   {
-    icon: PlantIcon,
+    image: 29192543,
+    alt: "Birthday cake pastel dengan dekorasi cream",
     name: "Simple",
     price: "Rp 350.000–600.000",
     featured: false,
     items: ["1 tier, ukuran 16-18cm", "Buttercream smooth/semi-naked", "Tulisan/dekorasi sederhana", "Porsi: 12-15 orang"],
   },
   {
-    icon: LeafIcon,
+    image: 30354868,
+    alt: "Cake bertema topi dengan ilustrasi wajah dan bunga pink",
     name: "Custom Design",
     price: "Rp 650.000–1.200.000",
     featured: true,
@@ -22,7 +25,8 @@ const tiers = [
     ],
   },
   {
-    icon: TreeIcon,
+    image: 1702373,
+    alt: "Wedding cake putih tiga tingkat dengan bunga segar",
     name: "Premium/Wedding",
     price: "Rp 1.500.000+",
     featured: false,
@@ -35,64 +39,70 @@ const tiers = [
   },
 ];
 
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const card = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
-};
 
 export default function PaketHarga() {
   return (
-    <section id="harga" className="py-24">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <h2 className="font-display text-3xl md:text-[2.25rem] text-ink text-center">
-          Estimasi Harga Berdasarkan Kompleksitas.
-        </h2>
+    <section id="harga" className="section price-section" aria-labelledby="price-heading">
+      <div className="container">
+        <div className="price-heading-row">
+          <h2 id="price-heading" className="section-heading">Cerita berbeda.<br />Detail berbeda.</h2>
+          <p className="section-intro">
+            Estimasi harga berdasarkan kompleksitas. Mulai dari cake sederhana sampai
+            centerpiece untuk hari besarmu—kita temukan yang pas untuk cerita dan porsimu.
+          </p>
+        </div>
 
-        <motion.div
-          className="mt-16 grid gap-8 md:grid-cols-3 items-start"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-        >
+        <div className="price-spread">
           {tiers.map((tier) => (
-            <motion.div
-              key={tier.name}
-              variants={card}
-              whileHover={{ y: -6 }}
-              className={
-                tier.featured
-                  ? "relative rounded-xl border-2 border-primary bg-canvas p-8 shadow-[0_0_0_4px_rgba(193,123,106,0.12)]"
-                  : "relative rounded-xl border border-hairline bg-canvas p-8"
-              }
-            >
-              {tier.featured && (
-                <span className="absolute -top-3 left-8 flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium text-canvas">
-                  <StarIcon weight="fill" size={12} /> Terpopuler
-                </span>
-              )}
-              <tier.icon weight="duotone" size={32} className="text-primary" />
-              <p className="mt-4 font-display text-xl text-ink">{tier.name}</p>
-              <p className="mt-1 text-lg font-medium text-primary">{tier.price}</p>
-              <ul className="mt-5 space-y-2">
-                {tier.items.map((item) => (
-                  <li key={item} className="text-sm text-body flex gap-2">
-                    <span className="text-primary">•</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            <article key={tier.name} className={`price-offer${tier.featured ? " price-offer-featured" : ""}`}>
+              <figure className="price-photo">
+                <img
+                  src={photo(tier.image)}
+                  srcSet={photoSet(tier.image)}
+                  sizes="(max-width: 640px) 120px, (max-width: 900px) 180px, 240px"
+                  width={960}
+                  height={720}
+                  alt={tier.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="photo-note">
+                  <a href={photoSource(tier.image)}>Inspirasi · Pexels</a>
+                </figcaption>
+              </figure>
+              <div className="price-title">
+                <h3>{tier.name}</h3>
+                {tier.featured ? <span className="price-popular">Terpopuler</span> : null}
+                <p className="price-amount">{tier.price}</p>
+              </div>
+              <div className="price-details">
+                <ul>
+                  {tier.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+                <a
+                  className="button secondary price-select"
+                  href="#konsultasi"
+                  aria-label={`Pilih paket ${tier.name} untuk konsultasi`}
+                  onClick={() => updateBrief(
+                    tier.name === "Premium/Wedding"
+                      ? { packageName: tier.name, occasion: "Wedding" }
+                      : { packageName: tier.name },
+                  )}
+                >
+                  Pilih paket
+                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </article>
           ))}
-        </motion.div>
+        </div>
 
-        <p className="mt-10 text-center text-sm text-muted">
-          Harga final ditentukan setelah konsultasi desain — kompleksitas dekorasi mempengaruhi harga.
+        <p className="price-note">
+          Harga final ditentukan setelah konsultasi desain—kompleksitas dekorasi
+          mempengaruhi harga. Foto di atas adalah inspirasi stok, bukan contoh karya
+          asli Chère atau jaminan hasil paket.
         </p>
       </div>
     </section>

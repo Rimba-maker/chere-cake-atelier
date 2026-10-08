@@ -1,0 +1,708 @@
+.celebration-section,
+.process-section,
+.taste-section,
+.dessert-section {
+  font-family: var(--sans);
+  color: var(--ink);
+}
+
+.celebration-section figure,
+.process-section figure,
+.taste-section figure,
+.dessert-section figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.celebration-section img,
+.process-section img,
+.taste-section img,
+.dessert-section img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.celebration-section a:focus-visible,
+.process-section a:focus-visible,
+.taste-section a:focus-visible,
+.taste-section button:focus-visible,
+.dessert-section a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 5px;
+}
+
+.celebration-heading-row,
+.taste-heading-row,
+.dessert-heading-row {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: end;
+  gap: 64px;
+  margin-bottom: 48px;
+}
+
+.celebration-heading-row .section-intro,
+.taste-heading-row .section-intro,
+.dessert-heading-row .section-intro {
+  margin: 0 0 4px;
+  max-width: 43ch;
+}
+
+.celebration-section {
+  background: var(--paper);
+}
+
+.celebration-composition {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.celebration-occasion {
+  min-width: 0;
+  display: grid;
+  background: var(--pink);
+}
+
+.celebration-birthday {
+  grid-column: 1 / 8;
+  grid-row: 1;
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.celebration-wedding {
+  grid-column: 8 / -1;
+  grid-row: 1;
+  background: var(--pistachio);
+}
+
+.celebration-corporate {
+  grid-column: 1 / 8;
+  grid-row: 2;
+  grid-template-columns: .85fr 1.3fr;
+  background: var(--pistachio);
+}
+
+.celebration-dessert {
+  grid-column: 1 / 8;
+  grid-row: 3;
+  grid-template-columns: 1.3fr .85fr;
+}
+
+.celebration-dessert .celebration-photo {
+  order: 2;
+}
+
+.celebration-anak {
+  grid-column: 8 / -1;
+  grid-row: 2 / 4;
+  background: var(--paper);
+  border: 1px solid var(--pink);
+  align-content: start;
+}
+
+.celebration-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+.celebration-photo img {
+  height: 100%;
+  min-height: 260px;
+}
+
+.celebration-birthday .celebration-photo img {
+  min-height: 610px;
+  object-position: 50% 50%;
+}
+
+.celebration-wedding .celebration-photo img {
+  height: 320px;
+  object-position: 50% 45%;
+}
+
+.celebration-anak .celebration-photo img {
+  height: 375px;
+}
+
+.celebration-photo .photo-note {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 7px 12px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.celebration-photo .photo-note a,
+.process-photo .photo-note a,
+.taste-photo .photo-note a,
+.dessert-section .photo-note a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.celebration-copy {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.celebration-copy h3 {
+  font-family: var(--display);
+  font-size: clamp(1.65rem, 2.4vw, 2.6rem);
+  letter-spacing: -.03em;
+  line-height: 1.08;
+  margin: 0 0 18px;
+}
+
+.celebration-copy > p {
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0 0 20px;
+}
+
+.celebration-copy .celebration-price {
+  color: var(--cherry);
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.celebration-copy .text-link {
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 6px 0;
+}
+
+.celebration-price-note {
+  margin: 24px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.process-section {
+  background: var(--pink);
+}
+
+.process-composition {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.process-copy .section-intro {
+  margin: 24px 0 0;
+  max-width: 45ch;
+}
+
+.process-sequence {
+  list-style: none;
+  padding: 0;
+  margin: 36px 0 24px;
+}
+
+.process-sequence li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 20px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(69, 35, 45, .25);
+}
+
+.process-number {
+  font-family: var(--display);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--cherry);
+}
+
+.process-sequence h3 {
+  font-family: var(--display);
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+  letter-spacing: -.02em;
+}
+
+.process-sequence p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.process-photo img {
+  height: 540px;
+  object-position: 50% 45%;
+}
+
+.process-photo .photo-note {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.process-lead-times {
+  background: var(--pistachio);
+  padding: 30px;
+  margin-top: 28px;
+}
+
+.process-lead-times h3 {
+  font-family: var(--display);
+  margin: 0 0 22px;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+
+.process-lead-times dl {
+  margin: 0;
+}
+
+.process-lead-times dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(69, 35, 45, .2);
+  font-size: 14px;
+}
+
+.process-lead-times dd {
+  margin: 0;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.process-lead-times > p {
+  font-size: 12px;
+  margin: 16px 0 0;
+}
+
+.taste-section {
+  color: var(--paper);
+  background: var(--plum);
+}
+
+.taste-section .section-heading,
+.taste-section .section-intro {
+  color: var(--paper);
+}
+
+.taste-composition {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: start;
+  gap: 56px;
+}
+
+.taste-photo img {
+  height: 720px;
+  object-position: 50% 50%;
+}
+
+.taste-photo .photo-note {
+  margin-top: 12px;
+  color: var(--pink);
+}
+
+.taste-selector,
+.taste-group {
+  min-width: 0;
+}
+
+.taste-group {
+  border: 0;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.taste-group legend {
+  padding: 0;
+  margin-bottom: 14px;
+  font-family: var(--display);
+  font-size: 25px;
+  letter-spacing: -.02em;
+}
+
+.taste-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.taste-options button {
+  appearance: none;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: var(--paper);
+  border: 1px solid var(--pink);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.taste-options button:hover {
+  background: rgba(245, 184, 205, .15);
+}
+
+.taste-options button[aria-pressed="true"] {
+  background: var(--pistachio);
+  border-color: var(--pistachio);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.taste-summary {
+  border-top: 1px solid var(--pink);
+  padding-top: 25px;
+}
+
+.taste-summary h3 {
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+  letter-spacing: -.02em;
+}
+
+.taste-summary > p {
+  margin: 0 0 16px;
+  line-height: 1.75;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.taste-summary .taste-summary-note {
+  color: var(--pink);
+  font-size: 12px;
+}
+
+.taste-summary .button {
+  background: var(--pink);
+  color: var(--ink);
+  margin-top: 4px;
+}
+
+.taste-summary .button:hover {
+  background: var(--pistachio);
+}
+
+.dessert-section {
+  background: var(--pistachio);
+}
+
+.dessert-heading-row {
+  grid-template-columns: 1fr 1fr;
+}
+
+.dessert-event-photo img {
+  height: 520px;
+  object-position: 50% 55%;
+}
+
+.dessert-section .photo-note {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.dessert-details {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.dessert-menu h3,
+.dessert-package h3 {
+  font-family: var(--display);
+  font-size: clamp(1.75rem, 2.8vw, 2.8rem);
+  line-height: 1.12;
+  letter-spacing: -.03em;
+  margin: 0 0 16px;
+}
+
+.dessert-menu > p {
+  margin: 0 0 20px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.dessert-price-list {
+  margin: 0;
+}
+
+.dessert-price-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 16px;
+  border-top: 1px solid rgba(69, 35, 45, .25);
+  padding: 15px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.dessert-price-list dd {
+  margin: 0;
+  font-weight: 800;
+  color: var(--cherry);
+  font-variant-numeric: tabular-nums;
+}
+
+.dessert-closeups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.dessert-closeups > figure:last-child {
+  margin-top: 52px;
+}
+
+.dessert-closeups img {
+  height: 325px;
+}
+
+.dessert-package {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 48px;
+  padding: 40px;
+  color: var(--paper);
+  background: var(--cherry);
+}
+
+.dessert-package h3 {
+  max-width: 15ch;
+}
+
+.dessert-package > div > p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.dessert-package-action {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 15px;
+}
+
+.dessert-package-action > p > strong {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.dessert-package-action .button {
+  background: var(--paper);
+  color: var(--cherry);
+}
+
+.dessert-package-action .button:hover {
+  background: var(--pink);
+}
+
+.dessert-package-action > span {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .celebration-birthday {
+    grid-template-columns: 1fr;
+  }
+
+  .celebration-birthday .celebration-photo img {
+    min-height: 0;
+    height: 360px;
+  }
+
+  .celebration-wedding .celebration-photo img {
+    height: 360px;
+  }
+
+  .celebration-copy {
+    padding: 26px;
+  }
+
+  .celebration-anak .celebration-photo img {
+    height: 320px;
+  }
+
+  .process-composition {
+    gap: 42px;
+  }
+
+  .taste-composition {
+    gap: 36px;
+  }
+
+  .dessert-details,
+  .dessert-package {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 800px) {
+  .celebration-heading-row,
+  .taste-heading-row,
+  .dessert-heading-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-bottom: 32px;
+  }
+
+  .process-composition,
+  .taste-composition {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .process-photo img {
+    height: 440px;
+  }
+
+  .taste-photo img {
+    height: 480px;
+  }
+
+  .dessert-event-photo img {
+    height: 380px;
+  }
+
+  .dessert-details {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 32px;
+  }
+
+  .dessert-closeups img {
+    height: 340px;
+  }
+
+  .dessert-package {
+    grid-template-columns: 1fr;
+    padding: 32px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .celebration-composition {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .celebration-occasion {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .celebration-photo,
+  .celebration-copy {
+    width: 100%;
+  }
+
+  .celebration-dessert .celebration-photo {
+    order: 0;
+  }
+
+  .celebration-photo img,
+  .celebration-birthday .celebration-photo img,
+  .celebration-wedding .celebration-photo img,
+  .celebration-anak .celebration-photo img {
+    min-height: 0;
+    height: 350px;
+  }
+
+  .celebration-corporate .celebration-photo img,
+  .celebration-dessert .celebration-photo img {
+    height: 280px;
+  }
+
+  .celebration-copy {
+    padding: 28px 24px;
+  }
+
+  .celebration-copy h3 {
+    font-size: 31px;
+  }
+
+  .process-sequence li {
+    gap: 12px;
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+
+  .process-sequence h3 {
+    font-size: 21px;
+  }
+
+  .process-photo img {
+    height: 370px;
+  }
+
+  .process-lead-times {
+    padding: 26px;
+  }
+
+  .taste-photo img {
+    height: 410px;
+  }
+
+  .taste-options button {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .taste-summary .button,
+  .dessert-package-action .button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .dessert-event-photo img {
+    height: 290px;
+  }
+
+  .dessert-closeups {
+    gap: 12px;
+  }
+
+  .dessert-closeups img {
+    height: 230px;
+  }
+
+  .dessert-closeups > figure:last-child {
+    margin-top: 32px;
+  }
+
+  .dessert-package {
+    padding: 28px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .taste-options button {
+    transition: none;
+  }
+}

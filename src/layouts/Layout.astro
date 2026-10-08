@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = "Chère Cake Atelier — Custom Cake & Dessert Table Jakarta",
-  description = "Custom birthday cake, wedding cake, dan dessert table dengan desain orisinal. Bahan premium, pre-order H-3, konsultasi desain gratis.",
+  description = "Cake custom dan dessert table untuk setiap cerita: birthday, wedding, dan corporate gifting. Pilih inspirasi, rasa, dan mulai konsultasi desain gratis bersama Chère.",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://cherecakeatelier.id");
@@ -84,14 +84,12 @@ const jsonLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="theme-color" content="#F5B8CD" />
+    <link rel="preload" href={`${import.meta.env.BASE_URL}fonts/bricolage-grotesque-latin.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${import.meta.env.BASE_URL}fonts/manrope-latin.woff2`} as="font" type="font/woff2" crossorigin />
   </head>
   <body class="bg-canvas text-body">
+    <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
     <slot />
   </body>
 </html>
