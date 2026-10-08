@@ -20,5 +20,9 @@ npm-debug.log*
 # astro
 .astro/
 
-# markdown docs (PRD, notes)
-*.md
+# local Markdown docs, including private how-we-build-this notes
+*.[mM][dD]
+
+# local AI settings and design-session artifacts
+.claude/
+.impeccable/
